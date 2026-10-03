@@ -2,7 +2,7 @@
 
 ## Read this first
 
-Continue work in this folder: `/Users/letsroll/Desktop/MBA/03_Coursework/AI Class/homework/hw-4/hw4`. The user wants this class project kept **local**. Do not create a public GitHub repo, push code, or submit to Canvas unless the user changes that decision. The real API key is in `.env`; **do not print it, paste it into chat, logs, screenshots, or commit it**. `.env`, `data/`, the database, and source product images are ignored by Git.
+Continue work in this folder: `/Users/letsroll/Desktop/MBA/03_Coursework/AI Class/homework/hw-4/hw4`. The user later authorized publishing the code to a public GitHub repository for submission preparation. The real API key is in `.env`; **do not print it, paste it into chat, logs, screenshots, or commit it**. `.env`, `data/`, the database, and source product images are ignored by Git.
 
 The assignment asks for a Campus Customs merchandise site with a React/Vite/TypeScript front end, FastAPI + PydanticAI backend, SQLite catalogue/inventory/users, accounts, chat search that updates product cards, chat memory, evidence screenshots, an audit trail, and documentation. Problem 6 (supplied later) specifically requires real description, price, and stock tools with clear sold-out answers. The user also requested three cute puppies that follow the desktop mouse.
 
@@ -55,4 +55,4 @@ Do not ask the user to create another key based solely on the old `pk-` assumpti
 
 ## Delivery state
 
-Git is initialized with three local commits; no remote is configured. The working tree was clean before adding this handoff file. The user expressly declined GitHub publication, so Problem 13's public repo and Canvas submission remain intentionally undone. Keep future changes local unless the user says otherwise.
+Git is initialized with four local commits as of this handoff update. The user authorized a public GitHub repository after initially requesting local-only work. Check `git remote -v` and `git status` for the current publication state. Canvas submission requires posting the public repository URL to the course assignment.

@@ -32,6 +32,8 @@ Working prompt: Add product search and category/price controls on the front end,
 ## Problem 10 — Style the website
 Working prompt: Give this store a distinct Yale-inspired visual system with strong type, editorial sections, product imagery, and a friendly chat experience.
 
+Follow-up prompt: Add a few cute puppies that follow the mouse around the site. The original design did not include this playful interaction.
+
 ## Problem 11 — Site testing
 Working prompt: Check the actual site in a browser and capture inventory, chat-result cards, and product-filter screenshots with clear captions.
 

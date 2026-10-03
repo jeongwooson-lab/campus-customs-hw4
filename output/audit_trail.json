@@ -54,5 +54,19 @@
     "args": "{'user': 'guest', 'message': 'What hoodies do you have?', 'product_id': None}",
     "result": "8 products",
     "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:23:07Z",
+    "tool_name": "agent_error",
+    "args": "model call",
+    "result": "ModelAPIError",
+    "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:23:07Z",
+    "tool_name": "chat",
+    "args": "{'user': 5, 'message': 'What hoodies do you have?', 'product_id': None}",
+    "result": "8 products",
+    "stop_reason": "model_unavailable"
   }
 ]

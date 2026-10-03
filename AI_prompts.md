@@ -1,6 +1,6 @@
 # AI prompt log
 
-The assignment was supplied as one document and the main request was: “Work through Problems 1–13 following the instructions, using ordinary college-student English.” The short prompts below are my own problem-by-problem restatements used to guide this build. They are not presented as thirteen separate messages from the student. Problem 6 was absent from the supplied text, so I did not invent its requirements.
+The assignment was supplied as one document and the main request was: “Work through Problems 1–13 following the instructions, using ordinary college-student English.” The short prompts below are my own problem-by-problem restatements used to guide this build. They are not presented as thirteen separate messages from the student. Problem 6 was missing from the first file and was provided later by the student.
 
 ## Problem 1 — Vibe coder prompts
 Working prompt: Keep a readable log of the assignment goals in my own words as I build, with one section per problem.
@@ -17,8 +17,8 @@ Working prompt: Let shoppers register with their name, email, and password. Stor
 ## Problem 5 — PydanticAI backend
 Working prompt: Build FastAPI routes around a PydanticAI shopping agent with separate prompt, model, tool, and wiring files.
 
-## Problem 6 — Not included in the supplied text
-No prompt can be logged accurately because the assignment file skips directly from Problem 5 to Problem 7.
+## Problem 6 — Tools: product info and stock
+Working prompt: Give the agent database tools for item descriptions, exact prices, and stock by size. Make sold-out sizes clear and document the lookup fields.
 
 ## Problem 7 — Chat search updates the page
 Working prompt: Return matched product records in a structured chat response, then render cards that still link to their detail pages.

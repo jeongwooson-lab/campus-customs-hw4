@@ -12,7 +12,7 @@ from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from models import AgentDeps, AuthInput, AuthResponse, ChatInput, ChatMessage, ChatResponse, RegisterInput, UserPublic
-from tools import DATA_DIR, connect, context_facts, get_product, list_products
+from tools import DATA_DIR, connect, context_facts, ensure_chat_table, get_product, list_products
 from agent import answer
 
 app = FastAPI(title='Campus Customs API')
@@ -34,16 +34,22 @@ def audit(tool, args, result, stop_reason):
         AUDIT_PATH.write_text(json.dumps(previous, indent=2) + '\n')
 
 
-def hash_password(password, salt=None):
+def hash_password(password, salt=None, rounds=600000):
     salt = salt or secrets.token_hex(16)
-    digest = hashlib.pbkdf2_hmac('sha256', password.encode(), salt.encode(), 120000).hex()
-    return f'pbkdf2_sha256${salt}${digest}'
+    digest = hashlib.pbkdf2_hmac('sha256', password.encode(), salt.encode(), rounds).hex()
+    return f'pbkdf2_sha256${rounds}${salt}${digest}'
 
 
 def verify_password(password, stored):
     try:
-        scheme,salt,_ = stored.split('$')
-        return scheme == 'pbkdf2_sha256' and hmac.compare_digest(hash_password(password,salt),stored)
+        parts = stored.split('$')
+        if len(parts) == 3:
+            scheme,salt,digest = parts; rounds = 120000
+        elif len(parts) == 4:
+            scheme,raw_rounds,salt,digest = parts; rounds = int(raw_rounds)
+        else: return False
+        candidate = hashlib.pbkdf2_hmac('sha256', password.encode(), salt.encode(), rounds).hex()
+        return scheme == 'pbkdf2_sha256' and hmac.compare_digest(candidate,digest)
     except ValueError: return False
 
 
@@ -119,6 +125,7 @@ def me(authorization: str | None=Header(None)):
 def history(authorization: str | None=Header(None)):
     user=current_user(authorization)
     if not user: raise HTTPException(401,'Please log in to see chat history.')
+    ensure_chat_table()
     with connect() as db:
         rows=db.execute('SELECT role,content,products_json FROM chat_messages WHERE user_id=? ORDER BY id DESC LIMIT 40',(user['id'],)).fetchall()
     return [ChatMessage(role=r['role'],content=r['content'],products=json.loads(r['products_json'] or '[]')) for r in reversed(rows)]
@@ -132,6 +139,7 @@ async def chat(data: ChatInput, authorization: str | None=Header(None)):
     deps=AgentDeps(user_name=(user['name'] if user else None),user_email=(user['email'] if user else None),product_id=data.product_id)
     prior=[]
     if user:
+        ensure_chat_table()
         with connect() as db:
             rows=db.execute('SELECT role,content FROM chat_messages WHERE user_id=? ORDER BY id DESC LIMIT 6',(user['id'],)).fetchall()
             prior=[dict(r) for r in reversed(rows)]

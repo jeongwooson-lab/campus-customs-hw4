@@ -26,4 +26,4 @@ The original Yale Bulldog Blue storefront informed the broad product groupings a
 
 ## Assignment notes
 
-The supplied assignment text omits Problem 6. No requirements were invented for it. Publishing to GitHub and Canvas requires working access to those accounts; see the delivery status in the final handoff.
+Problem 6 was supplied separately after the initial file and is covered by the product and stock tools. The student chose to keep this project local, so it has not been published to GitHub or submitted to Canvas.

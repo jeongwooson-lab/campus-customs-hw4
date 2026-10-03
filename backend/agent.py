@@ -13,7 +13,7 @@ def make_agent():
         from openai import AsyncOpenAI
         from pydantic_ai.models.openai import OpenAIChatModel
         from pydantic_ai.providers.openai import OpenAIProvider
-        client = AsyncOpenAI(api_key=os.environ['PORTKEY_API_KEY'], base_url=os.getenv('PORTKEY_BASE_URL', 'https://api.portkey.ai/v1'), default_headers={'x-portkey-provider': os.getenv('PORTKEY_PROVIDER', 'openai')})
+        client = AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY') or 'portkey-gateway', base_url=os.getenv('PORTKEY_BASE_URL', 'https://api.portkey.ai/v1'), default_headers={'x-portkey-api-key': os.environ['PORTKEY_API_KEY'], 'x-portkey-provider': os.getenv('PORTKEY_PROVIDER', 'openai')})
         model = OpenAIChatModel(model_name, provider=OpenAIProvider(openai_client=client))
     else:
         model = os.getenv('AI_MODEL', 'openai:gpt-5.6')

@@ -62,3 +62,18 @@ def context_facts(message, product_id=None):
     if contextual and any(t in lower for t in ['this','it','these','here','pink','size','stock','price','color']):
         return [contextual]
     return search_products(message)
+
+
+def ensure_chat_table():
+    """Add the memory table when a fresh course data pack has only the three seed tables."""
+    with connect() as db:
+        db.execute("""CREATE TABLE IF NOT EXISTS chat_messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            role TEXT NOT NULL CHECK(role IN ('user','assistant')),
+            content TEXT NOT NULL,
+            products_json TEXT,
+            created_at TEXT NOT NULL DEFAULT (datetime('now'))
+        )""")
+        db.execute('CREATE INDEX IF NOT EXISTS idx_chat_user_id ON chat_messages(user_id, id)')
+        db.commit()

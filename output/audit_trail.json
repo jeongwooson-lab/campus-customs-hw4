@@ -1,0 +1,58 @@
+[
+  {
+    "time": "2026-10-03T20:10:02Z",
+    "tool_name": "agent_error",
+    "args": "model call",
+    "result": "ModelAPIError",
+    "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:10:02Z",
+    "tool_name": "chat",
+    "args": "{'user': 1, 'message': 'How much is this and what sizes are in stock?', 'product_id': 'basic-hoodie-big-yale'}",
+    "result": "1 products",
+    "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:14:44Z",
+    "tool_name": "agent_error",
+    "args": "model call",
+    "result": "ModelHTTPError",
+    "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:14:44Z",
+    "tool_name": "chat",
+    "args": "{'user': 'guest', 'message': 'Can you tell me about the price and stock for this item?', 'product_id': 'basic-hoodie-big-yale'}",
+    "result": "1 products",
+    "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:16:05Z",
+    "tool_name": "agent_error",
+    "args": "model call",
+    "result": "ModelHTTPError",
+    "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:16:05Z",
+    "tool_name": "chat",
+    "args": "{'user': 'guest', 'message': 'Can you tell me about the price and stock for this item?', 'product_id': 'basic-hoodie-big-yale'}",
+    "result": "1 products",
+    "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:16:50Z",
+    "tool_name": "agent_error",
+    "args": "model call",
+    "result": "ModelHTTPError",
+    "stop_reason": "model_unavailable"
+  },
+  {
+    "time": "2026-10-03T20:16:50Z",
+    "tool_name": "chat",
+    "args": "{'user': 'guest', 'message': 'What hoodies do you have?', 'product_id': None}",
+    "result": "8 products",
+    "stop_reason": "model_unavailable"
+  }
+]

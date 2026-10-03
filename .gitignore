@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+data/
+*.db
+*.sqlite*
+products/
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+data
+*.tsbuildinfo
